@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OOP in JavaScript</title>
+	<style>
+		.forSpan
+		{
+			display: inline-block;
+			width: 100px;
+			font-size: 24px;
+		}
+	</style>
+</head>
+<body>
+	<p style="font-size: 25px;"> Create 2 objects </p>
+	<div style="float: left; margin-right: 50px;">
+		<span class="forSpan">Height: </span>
+		<input type="text" name="text" id="heightText" />  <br />
+		
+		<span class="forSpan">Width: </span>
+		<input type="text" name="text" id="widthText" />  <br />
+		
+		<span class="forSpan">Depth: </span>
+		<input type="text" name="text" id="depthText" />  <br />
+		
+		<span class="forSpan">Material: </span>
+		<input type="text" name="text" id="materialText" /> <br/>
+	</div>
+	<div>
+		<span class="forSpan">Height: </span>
+		<input type="text" name="text" id="heightTextOne" />  <br />
+		
+		<span class="forSpan">Width: </span>
+		<input type="text" name="text" id="widthTextOne" />  <br />
+		
+		<span class="forSpan">Depth: </span>
+		<input type="text" name="text" id="depthTextOne" />  <br />
+		
+		<span class="forSpan">Material: </span>
+		<input type="text" name="text" id="materialTextOne" /> <br/>
+	</div><br/>
+
+	<input type="button" name="btn" id="entBtn" value="Enter" style="font-size: 20px; margin-top: 10px;" />
+
+<script type="text/javascript">
+	class Box
+	{
+		constructor() {
+			this.height = null;
+			this.width = null;
+			this.depth = null;
+			this.material = null;
+		}
+
+		Volume () { return this.height * this.width * this.depth; }
+		equal (otherObj) {
+			return this.width === otherObj.width &&
+				this.height === otherObj.height &&
+				this.depth === otherObj.depth &&
+				this.material === otherObj.material;
+		}
+	}
+
+	var $ = function(id) { return document.getElementById(id); }
+	$("entBtn").onclick = function () 
+	{
+		var enteredHeight = $("heightText").value;
+		var enteredWidth = $("widthText").value;
+		var enteredDepth = $("depthText").value;
+		var enteredMaterial = $("materialText").value;
+
+		var enteredHeightOne = $("heightTextOne").value;
+		var enteredWidthOne = $("widthTextOne").value;
+		var enteredDepthOne = $("depthTextOne").value;
+		var enteredMaterialOne = $("materialTextOne").value;
+
+		var boxOne = new Box();
+		var boxTwo = new Box(); 
+
+		boxOne.height = enteredHeight;
+		boxOne.width = enteredWidth;
+		boxOne.depth = enteredDepth;
+		boxOne.material = enteredMaterial;	
+		$("sad").innerHTML += ("Volume of the first Box is: " + boxOne.Volume() + "<br/>");
+
+		boxTwo.height = enteredHeightOne;
+		boxTwo.width = enteredWidthOne;
+		boxTwo.depth = enteredDepthOne;	
+		boxTwo.material = enteredMaterialOne;
+		$("sad").innerHTML += ("Volume of the second Box is: " + boxTwo.Volume() + "<br/>");
+
+		var equal = boxOne.equal(boxTwo);
+		if (equal == true) {
+				$("sad").innerHTML += ("Boxes is equal" + "<br/><br/>"); 
+		}
+		else{
+				$("sad").innerHTML += ("Boxes is not equal" + "<br/><br/>"); 
+			}
+
+		console.log(boxOne);
+		console.log("\n");
+		console.log(boxTwo);
+		}
+
+
+</script>
+	<div id = "sad" style="padding-top: 10px; font-size: 24px;"></div>
+
+
+</body>
+</html>
